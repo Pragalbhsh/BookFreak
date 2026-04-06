@@ -28,3 +28,12 @@ app.get('/health', (req, res) => {
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
 });
+
+const booksRoutes = require('./routes/books');
+app.use('/api/books', booksRoutes);
+
+// Global error handler - add at the very bottom of server.js
+app.use((err, req, res, next) => {
+    console.log('GLOBAL ERROR:', err);
+    res.status(500).json({ message: err.message });
+});
