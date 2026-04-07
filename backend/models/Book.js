@@ -59,7 +59,24 @@ type : {
     type: String,
     enum: ['sell', 'donate', 'exchange'],
     required: true
-}
+},
+
+reviews: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Review'
+},
+rating: {
+    type: Number,
+    default: 0
+},
+totalReviews: {
+    type: Number,
+    default: 0
+},
+totalRatings: {
+    type: Number,
+    default: 0
+},
 },
 {timestamps: true}
 )
