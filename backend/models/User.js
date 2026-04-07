@@ -24,6 +24,10 @@ const userSchema = new mongoose.Schema({
     city: {
         type: String,
     },
+    wishlist: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Book'
+    }],
     role: {
         type: String,
         default: 'user',  // can be 'user' or 'admin'

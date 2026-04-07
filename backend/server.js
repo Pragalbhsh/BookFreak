@@ -4,6 +4,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/auth');
+const { toggleWishlist, getWishlist } = require('../controllers/wishlistController');
 
 // read from env file (very important thats why we right at first)
 dotenv.config();
@@ -32,6 +33,11 @@ app.listen(process.env.PORT, () => {
 const booksRoutes = require('./routes/books');
 app.use('/api/books', booksRoutes);
 
+const wishlistRoutes = require('./routes/wishlist');
+app.use('/api/wishlist', wishlistRoutes);
+
+const reviewsRoutes = require('./routes/reviews');
+app.use('/api/reviews', reviewsRoutes);
 // Global error handler - add at the very bottom of server.js
 app.use((err, req, res, next) => {
     console.log('GLOBAL ERROR:', err);
