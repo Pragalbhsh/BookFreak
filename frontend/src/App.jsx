@@ -10,7 +10,7 @@ import Profile from './pages/Profile';
 import Navbar from './components/common/Navbar';
 
 export default function App() {
-    return (
+    return 
         <BrowserRouter>
             <Toaster position="top-right" />
             <Navbar />
