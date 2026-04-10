@@ -8,9 +8,10 @@ import CreateListing from './pages/CreateListing';
 import Wishlist from './pages/Wishlist';
 import Profile from './pages/Profile';
 import Navbar from './components/common/Navbar';
+import Chat from './pages/Chat';
 
 export default function App() {
-    return 
+    return (
         <BrowserRouter>
             <Toaster position="top-right" />
             <Navbar />
@@ -22,6 +23,7 @@ export default function App() {
                 <Route path="/create" element={<CreateListing />} />
                 <Route path="/wishlist" element={<Wishlist />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/chat/:sellerId" element={<Chat />} />
             </Routes>
         </BrowserRouter>
     );

@@ -165,10 +165,13 @@ export default function BookDetail() {
                                 </>
                             ) : (
                                 <>
-                                    {/* Others see contact + wishlist */}
-                                    <button className="flex-1 bg-primary text-white py-3 rounded-xl font-medium hover:opacity-90 transition">
-                                        Contact Seller
+                                    {/* contact seller button */}
+                                    <button 
+                                        onClick={() => navigate(`/chat/${book.seller?._id}`)}
+                                        className="flex-1 bg-primary text-white py-3 rounded-xl font-medium hover:opacity-90 transition">
+                                        💬 Contact Seller
                                     </button>
+                                    {/* wishlist button */}
                                     <button
                                         onClick={handleWishlist}
                                         className={`px-6 py-3 rounded-xl font-medium border-2 transition
