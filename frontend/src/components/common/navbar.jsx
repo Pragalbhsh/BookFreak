@@ -2,13 +2,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import useAuthStore from '../../store/authStore';
 
 export default function Navbar() {
-    // get user and logout from our global store
     const { user, logout } = useAuthStore();
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        logout();                    // clear user from store + localStorage
-        navigate('/login');          // redirect to login page
+        logout();
+        navigate('/login');
     };
 
     return (
@@ -18,24 +17,21 @@ export default function Navbar() {
                 📚 BookFreak
             </Link>
 
-            {/* Middle - Search bar */}
-            <input
-                type="text"
-                placeholder="Search books..."
-                className="hidden md:block w-1/3 px-4 py-2 rounded-full text-gray-800 text-sm outline-none"
-            />
-
             {/* Right side - Nav links */}
             <div className="flex items-center gap-4 text-sm font-body">
                 <Link to="/" className="hover:text-accent transition">Home</Link>
 
                 {user ? (
                     <>
-                        {/* show these when logged in */}
                         <Link to="/wishlist" className="hover:text-accent transition">❤️ Wishlist</Link>
                         <Link to="/create" className="bg-accent text-white px-4 py-2 rounded-full hover:opacity-90 transition">
                             + Sell Book
                         </Link>
+                        {user?.role === 'admin' && (
+                            <Link to="/admin" className="hover:text-accent transition">
+                                🛡️ Admin
+                            </Link>
+                        )}
                         <Link to="/profile" className="hover:text-accent transition">
                             👤 {user.name}
                         </Link>
@@ -45,7 +41,6 @@ export default function Navbar() {
                     </>
                 ) : (
                     <>
-                        {/* show these when logged out */}
                         <Link to="/login" className="hover:text-accent transition">Login</Link>
                         <Link to="/signup" className="bg-accent text-white px-4 py-2 rounded-full hover:opacity-90 transition">
                             Sign Up

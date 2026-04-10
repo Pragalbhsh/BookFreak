@@ -9,6 +9,7 @@ import Wishlist from './pages/Wishlist';
 import Profile from './pages/Profile';
 import Navbar from './components/common/Navbar';
 import Chat from './pages/Chat';
+import Admin from './pages/Admin';
 
 export default function App() {
     return (
@@ -24,6 +25,7 @@ export default function App() {
                 <Route path="/wishlist" element={<Wishlist />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/chat/:sellerId" element={<Chat />} />
+                <Route path="/admin" element={<Admin />} />
             </Routes>
         </BrowserRouter>
     );
