@@ -5,7 +5,11 @@ import useAuthStore from '../store/authStore';
 import toast from 'react-hot-toast';
 
 // connect to our backend socket server
-const socket = io('http://localhost:8080');
+//const socket = io('http://localhost:8080');
+const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
+const socketUrl = new URL(apiBase).origin;
+const socket = io(socketUrl);
+
 
 export default function Chat() {
     const { sellerId } = useParams(); // seller's ID from URL
