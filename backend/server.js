@@ -58,11 +58,12 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: process.env.CLIENT_ORIGIN
-            ? [process.env.CLIENT_ORIGIN, 'http://localhost:5173']
-            : 'http://localhost:5173',
-        methods: ['GET', 'POST']
-    }
+        origin: [
+            'https://book-freak-umber.vercel.app',
+            'http://localhost:5173',
+        ],
+        methods: ['GET', 'POST'],
+    },
 });
 
 const Message = require('./models/Message');
