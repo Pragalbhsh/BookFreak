@@ -8,7 +8,9 @@ import toast from 'react-hot-toast';
 //const socket = io('http://localhost:8080');
 const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
 const socketUrl = new URL(apiBase).origin;
-const socket = io(socketUrl);
+const socket = io(socketUrl, {
+    transports: ['websocket', 'polling']
+});
 
 
 export default function Chat() {
@@ -89,8 +91,9 @@ export default function Chat() {
                     )}
                     {messages.map((msg, i) => {
                         // check if this message is from logged in user
-                        const isMe = msg.sender?._id === user?.id || 
-                                     msg.sender?._id === user?._id;
+                        const senderId = msg.sender?._id || msg.sender
+                        const myId = user?.id || user?._id
+                        const isMe = senderId?.toString() === myId?.toString()
                         return (
                             <div key={i} className={`flex ${isMe ? 'justify-end' : 'justify-start'}`}>
                                 <div className={`max-w-xs px-4 py-2 rounded-2xl text-sm
