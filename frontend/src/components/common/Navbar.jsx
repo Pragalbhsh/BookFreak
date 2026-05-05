@@ -24,6 +24,7 @@ export default function Navbar() {
                 {user ? (
                     <>
                         <Link to="/wishlist" className="hover:text-accent transition">❤️ Wishlist</Link>
+                        <Link to="/chats" className="hover:text-accent transition">💬 Chats</Link>
                         <Link to="/create" className="bg-accent text-white px-4 py-2 rounded-full hover:opacity-90 transition">
                             + Sell Book
                         </Link>
