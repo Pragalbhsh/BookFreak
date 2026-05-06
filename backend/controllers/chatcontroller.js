@@ -1,5 +1,5 @@
 const getMyChats = async (req, res) => {
-    const userId = req.user._id.toString()
+    const userId = (req.user._id || req.user.id).toString();
     // get logged in user's ID
     // .toString() = convert MongoDB ID to string
 

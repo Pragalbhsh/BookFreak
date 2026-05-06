@@ -8,6 +8,7 @@ import CreateListing from './pages/CreateListing';
 import Wishlist from './pages/Wishlist';
 import Profile from './pages/Profile';
 import Navbar from './components/common/Navbar';
+import Chat from './pages/Chat'; 
 import Chats from './pages/Chats';
 import Admin from './pages/Admin';
 
@@ -24,6 +25,7 @@ export default function App() {
                 <Route path="/create" element={<CreateListing />} />
                 <Route path="/wishlist" element={<Wishlist />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/chat/:sellerId" element={<Chat />} />
                 <Route path="/chats" element={<Chats />} />
                 <Route path="/admin" element={<Admin />} />
             </Routes>
