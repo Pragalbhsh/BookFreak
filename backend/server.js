@@ -14,13 +14,17 @@ const app = express();
 
 // middlewares
 app.use(cors({
-    origin: '*',
+    origin: [
+        'https://book-freak-umber.vercel.app',
+        'http://localhost:5173',
+        'http://localhost:8080'
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
 }));
 app.use(express.json());
 app.use(morgan('dev'));
-
 // routes
 const authRoutes = require('./routes/auth');
 const booksRoutes = require('./routes/books');
