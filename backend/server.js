@@ -4,6 +4,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
 const adminRoutes = require('./routes/admin');
+const chatRoutes = require('./routes/chat');
 
 // load env first!
 dotenv.config();
@@ -31,6 +32,7 @@ app.use('/api/books', booksRoutes);
 app.use('/api/wishlist', wishlistRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/chats', chatRoutes);
 
 app.get('/health', (req, res) => {
     res.status(200).json({ message: 'Server is running' });
