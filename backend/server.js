@@ -13,15 +13,11 @@ connectDB();
 const app = express();
 
 // middlewares
+// middlewares
 app.use(cors({
-    origin: [
-        'https://book-freak-umber.vercel.app',
-        'http://localhost:5173',
-        'http://localhost:8080'
-    ],
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
 app.use(morgan('dev'));
