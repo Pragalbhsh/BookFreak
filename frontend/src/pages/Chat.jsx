@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import useAuthStore from '../store/authStore';
+import api from '../utils/api';
 
 // socket created ONCE outside component
 const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
@@ -14,6 +15,7 @@ export default function Chat() {
     const { sellerId } = useParams();
     // useParams gets the sellerId from URL
     // /chat/69d22... → sellerId = "69d22..."
+    const [sellerName, setSellerName] = useState('Loading...');
 
     const { user } = useAuthStore();
     // get logged in user from zustand
@@ -39,29 +41,31 @@ export default function Chat() {
     // "abc_def" is same room for both abc and def
 
     useEffect(() => {
-        // join the chat room when page loads
-        socket.emit('join_room', roomId);
-
-        // receive old messages from DB
+        fetchSeller()
+        socket.emit('join_room', roomId)
+    
         socket.on('old_messages', (oldMessages) => {
-            setMessages(oldMessages);
-        });
-
-        // receive new messages in real time
+            setMessages(oldMessages)
+        })
+    
         socket.on('receive_message', (message) => {
-            setMessages(prev => [...prev, message]);
-            // prev = current messages
-            // add new message to end of array
-        });
-
-        // cleanup when leaving page
+            setMessages(prev => [...prev, message])
+        })
+    
         return () => {
-            socket.off('old_messages');
-            socket.off('receive_message');
-            // remove listeners so they don't stack up
-        };
+            socket.off('old_messages')
+            socket.off('receive_message')
+        }
     }, [roomId]);
 
+    const fetchSeller = async () => {
+        try {
+            const res = await api.get(`/auth/user/${sellerId}`);
+            setSellerName(res.data.name);
+        } catch (err) {
+            setSellerName('Seller');
+        }
+    };
     // auto scroll to bottom when new message arrives
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -101,12 +105,12 @@ export default function Chat() {
                         ← Back
                     </button>
                     <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center font-bold">
-                        S
-                    </div>
-                    <div>
-                        <p className="font-medium">Seller</p>
-                        <p className="text-xs text-gray-300">BookFreak Chat</p>
-                    </div>
+                         {sellerName.charAt(0).toUpperCase()}
+                        </div>
+                        <div>
+                            <p className="font-medium">{sellerName}</p>
+                            <p className="text-xs text-gray-300">BookFreak Chat</p>
+                        </div>
                 </div>
 
                 {/* Messages area */}
