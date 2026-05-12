@@ -57,24 +57,37 @@ export default function Home() {
         <div className="bg-background min-h-screen">
 
             {/* Hero Section */}
-            <div className="bg-primary text-white py-16 px-6 text-center">
-                <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4">
-                    Find Your Next <span className="text-accent">Book</span>
-                </h1>
-                <p className="text-gray-300 mb-8 text-lg">
-                    Buy, sell or donate second-hand books in your city
-                </p>
-                {/* Search bar */}
-                <div className="max-w-xl mx-auto">
-                    <input
-                        type="text"
-                        placeholder="Search by book title..."
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                        className="w-full px-6 py-3 rounded-full text-gray-800 text-sm outline-none shadow-lg"
-                    />
-                </div>
-            </div>
+             <div 
+             className="text-white py-16 px-6 text-center relative"
+              style={{
+              backgroundImage: 'url(/hero.png)',
+                backgroundSize: 'cover',
+              backgroundPosition: 'center',
+    }}
+>
+    {/* dark overlay so text is readable */}
+    <div className="absolute inset-0 bg-black opacity-60"></div>
+    
+    {/* content must be above overlay */}
+    <div className="relative z-10">
+        <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4">
+            Find Your Next <span className="text-accent">Book</span>
+        </h1>
+        <p className="text-gray-300 mb-8 text-lg">
+            Buy, sell or donate second-hand books in your city
+        </p>
+        {/* Search bar */}
+        <div className="max-w-xl mx-auto">
+            <input
+                type="text"
+                placeholder="Search by book title..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="w-full px-6 py-3 rounded-full text-gray-800 text-sm outline-none shadow-lg"
+            />
+        </div>
+    </div>
+</div>
 
             {/* Categories Row */}
             <div className="flex gap-3 overflow-x-auto px-6 py-4 bg-white shadow-sm">
