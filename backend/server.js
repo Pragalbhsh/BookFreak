@@ -61,7 +61,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
         origin: [
-            'https://book-freak-umber.vercel.app',
+            'https://book-freak-9wpcqgg3h-pragalbhshs-projects.vercel.app/',
             'http://localhost:5173',
         ],
         methods: ['GET', 'POST'],
