@@ -5,17 +5,17 @@ import BookCard from '../components/book/BookCard';
 // categories list for filter row
 const CATEGORIES = [
     { label: 'All', value: '' },
-    { label: '📚 Fiction', value: 'fiction' },
-    { label: '🎌 Manga', value: 'manga' },
-    { label: '📝 Competitive', value: 'competitive exams' },
-    { label: '🔧 Engineering', value: 'engineering' },
-    { label: '🏥 Medical', value: 'medical' },
-    { label: '🏫 School', value: 'school' },
-    { label: '💼 Business', value: 'business' },
-    { label: '🧘 Self Help', value: 'self help' },
-    { label: '👶 Children', value: 'children' },
-    { label: '🙏 Religion', value: 'religion' },
-    { label: '🌍 Language', value: 'language learning' },
+    { label: 'Fiction', value: 'fiction' },
+    { label: 'Manga', value: 'manga' },
+    { label: 'Competitive', value: 'competitive exams' },
+    { label: 'Engineering', value: 'engineering' },
+    { label: 'Medical', value: 'medical' },
+    { label: 'School', value: 'school' },
+    { label: 'Business', value: 'business' },
+    { label: 'Self Help', value: 'self help' },
+    { label: 'Children', value: 'children' },
+    { label: 'Religion', value: 'religion' },
+    { label: 'Language', value: 'language learning' },
 ];
 
 export default function Home() {
@@ -182,7 +182,7 @@ export default function Home() {
                         <div className="text-center py-20 text-gray-400">Loading books...</div>
                     ) : books.length === 0 ? (
                         <div className="text-center py-20 text-gray-400">
-                            No books found 😔
+                            No books found. Try different filters or search again.
                         </div>
                     ) : (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

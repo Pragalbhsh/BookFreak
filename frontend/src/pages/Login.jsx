@@ -51,7 +51,7 @@ export default function Login() {
                             name="email"
                             value={form.email}
                             onChange={handleChange}
-                            placeholder="parth@gmail.com"
+                            placeholder="abc@gmail.com"
                             className="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm"
                             required
                         />
