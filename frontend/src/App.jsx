@@ -11,6 +11,7 @@ import Navbar from './components/common/Navbar';
 import Chat from './pages/Chat'; 
 import Chats from './pages/Chats';
 import Admin from './pages/Admin';
+import EditListing from './pages/EditListing';
 
 export default function App() {
     return (
@@ -28,6 +29,7 @@ export default function App() {
                 <Route path="/chat/:sellerId" element={<Chat />} />
                 <Route path="/chats" element={<Chats />} />
                 <Route path="/admin" element={<Admin />} />
+                <Route path="/edit/:id" element={<EditListing />} />
             </Routes>
         </BrowserRouter>
     );
